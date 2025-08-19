@@ -1,13 +1,16 @@
 "use client";
 import { useState } from "react";
 import { useCart } from "@/store/cart";
+import {Drawer} from "@/components/ui/drawer";
+import CartDrawer from "@/components/CartDrawer";
 
 export default function Header() {
   const { count } = useCart();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <header className="sticky justify-center items-center top-0 py-2 z-40 bg-white/90 ">
+    <header className="sticky justify-center items-center top-0 py-2 z-40 bg-white ">
       <nav className="container flex  flex-row items-center justify-between px-8 gap-2 h-14">
         <div className="flex  items-center justify-center gap-4 md:gap-8">
           <button
@@ -41,7 +44,8 @@ export default function Header() {
           <button
             className="relative p-2"
             aria-label="open cart"
-            onClick={() => setIsMenuOpen("cart" as unknown as boolean)}
+            onClick={() => setIsCartOpen(true)}
+                        
           >
             <img src="/images/icon-cart.svg" alt="Cart Icon" />
             {count > 0 && (
@@ -50,6 +54,7 @@ export default function Header() {
               </span>
             )}
           </button>
+          <CartDrawer open={isCartOpen} onOpenChange={setIsCartOpen} />
           <div>
             <img
               src="/images/image-avatar.png"

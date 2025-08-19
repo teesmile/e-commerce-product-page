@@ -1,15 +1,17 @@
 import ProductGallery from "@/components/ProductGallery";
+import ProductInfo from "@/components/ProductInfo";
 import { products } from "@/data/product";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <main className="container py-0 md:py-20 md:border-t md:border-gray-200">
+      <main className="container py-0 md:py-20 md:border-t md:border-gray-200 md:flex md:justify-center md:items-center">
         <ProductGallery images={products.images} thumbnails={products.thumbnails} />
+        <ProductInfo />
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
+        {/* <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
           target="_blank"
@@ -53,7 +55,7 @@ export default function Home() {
             height={16}
           />
           Go to nextjs.org →
-        </a>
+        </a> */}
       </footer>
     </>
   );
