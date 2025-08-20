@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {Kumbh_Sans} from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
+import { Toaster } from "sonner";
 
 const kumbh_sans = Kumbh_Sans({
   variable: "--font-kumbh-sans",
@@ -27,6 +28,8 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <Toaster richColors position="top-center" />
+
       </body>
     </html>
   );

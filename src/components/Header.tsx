@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { useCart } from "@/store/cart";
 import {Drawer} from "@/components/ui/drawer";
-import CartDrawer from "@/components/CartDrawer";
+import CartDrawer from "@/components/CartDialog";
+import CartDialog from "@/components/CartDialog";
 
 export default function Header() {
   const { count } = useCart();
@@ -10,8 +11,9 @@ export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <header className="sticky justify-center items-center top-0 py-2 z-40 bg-white ">
-      <nav className="container flex  flex-row items-center justify-between px-8 gap-2 h-14">
+    <header className="sticky top-0 py-2 z-40 bg-white ">
+  <nav className=" md:flex mx-auto container flex items-center justify-between px-8 gap-2 h-14">
+
         <div className="flex  items-center justify-center gap-4 md:gap-8">
           <button
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
@@ -36,30 +38,40 @@ export default function Header() {
                     <div className='w-6 h-0.5 bg-neutral-veryDark mb-1'/>
                     <div className='w-6 h-0.5 bg-neutral-veryDark'/> */}
           </button>
-          <div className="text-xl font-bold">
+          {/* Logo */}
+          <div className="cursor-pointer text-xl font-bold">
             <img src="/images/logo.svg" alt="Logo" />
           </div>
+          {/* Desktop Navigation Links */}
+           <div className="hidden md:flex gap-8 font-bold text-neutral-veryDark">
+        <a href="#" className="hover:text-brand cursor-pointer">Collections</a>
+        <a href="#" className="hover:text-brand cursor-pointer">Men</a>
+        <a href="#" className="hover:text-brand cursor-pointer">Women</a>
+        <a href="#" className="hover:text-brand cursor-pointer">About</a>
+        <a href="#" className="hover:text-brand cursor-pointer">Contact</a>
+      </div>
         </div>
+        {/* Cart and User Icon */}
         <div className="flex flex-row items-center justify-center gap-2 md:gap-8 font-bold md:flex">
           <button
-            className="relative p-2"
+            className="relative p-2 cursor-pointer"
             aria-label="open cart"
             onClick={() => setIsCartOpen(true)}
                         
           >
             <img src="/images/icon-cart.svg" alt="Cart Icon" />
             {count > 0 && (
-              <span className="absolute -top-1 -right-1 bg-brand text-white text-[10px] px-1.5 rounded-full font-bold">
+              <span className=" absolute -top-1 -right-1 bg-brand text-white text-[10px] px-1.5 rounded-full font-bold">
                 {count}
               </span>
             )}
           </button>
-          <CartDrawer open={isCartOpen} onOpenChange={setIsCartOpen} />
+          <CartDialog open={isCartOpen} onOpenChange={setIsCartOpen} />
           <div>
             <img
               src="/images/image-avatar.png"
               alt="User Icon"
-              className="w-8 h-8 rounded-full"
+              className="cursor-pointer w-8 h-8 rounded-full"
             />
           </div>
         </div>
@@ -69,10 +81,10 @@ export default function Header() {
       {isMenuOpen && (
         <div className="fixed inset-0 z-50 flex">
           {/* Drawer */}
-          <aside className="w-[64vw] max-w-xs h-full bg-white p-6 shadow-xl transform transition-transform duration-300 ease-in-out translate-x-0">
+          <aside className="**md:hidden** w-[64vw] max-w-xs h-full bg-white p-6 shadow-xl transform transition-transform duration-300 ease-in-out translate-x-0">
             <button
               aria-label="Close Menu"
-              className="mb-6"
+              className="mb-6 cursor-pointer"
               onClick={() => setIsMenuOpen(false)}
             >
               <img
@@ -82,19 +94,19 @@ export default function Header() {
               />
             </button>
             <nav className="space-y-4 font-bold text-neutral-veryDark">
-              <a href="#" className="block hover:text-brand">
+              <a href="#" className="block hover:text-brand cursor-pointer">
                 Collections
               </a>
-              <a href="#" className="block hover:text-brand">
+              <a href="#" className="block hover:text-brand cursor-pointer">
                 Men
               </a>
-              <a href="#" className="block hover:text-brand">
+              <a href="#" className="block hover:text-brand cursor-pointer">
                 Women
               </a>
-              <a href="#" className="block hover:text-brand">
+              <a href="#" className="block hover:text-brand cursor-pointer">
                 About
               </a>
-              <a href="#" className="block hover:text-brand">
+              <a href="#" className="block hover:text-brand cursor-pointer">
                 Contact
               </a>
             </nav>
