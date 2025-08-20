@@ -8,13 +8,14 @@ export default function ProductInfo() {
   const [value, setValue] = useState(0)
   const { addItem} = useCart()
 
-    const discountedPrice = products.discount ? products.original * (1 - (products.discount)) : products.original
-    const originalPrice = products.original
+    const discountedPrice = products.price ? products.price * (1 - (products.discount || 0)) : products.price
+    const originalPrice = products.price
     const handleAddToCart = () => {
     addItem({
       id: products.id,
       title: products.title,
-      price: products.price,
+      price: discountedPrice,
+      discount: products.discount,
       quantity: value,
       thumbnail: products.thumbnails[0],
     }, value)

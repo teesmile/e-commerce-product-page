@@ -4,7 +4,7 @@ export const products: Product = {
   id: "fall-ltd-sneakers",
   title: "Fall Limited Edition Sneakers",
   company: "Sneaker Company",
-  price: 125.0,
+  price: 250.0,
   description: "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.",
     discount: 0.5,
     original: 250.0,

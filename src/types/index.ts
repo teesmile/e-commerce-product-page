@@ -19,4 +19,5 @@ export type CartItem = {
   thumbnail: string;
   quantity: number;
   count?: number; 
+  discount?: number;
 };
