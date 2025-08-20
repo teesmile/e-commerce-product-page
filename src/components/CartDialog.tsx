@@ -18,7 +18,7 @@ type CartDialogProps = {
 }
 
 export default function CartDialog({ open, onOpenChange }: CartDialogProps) {
-  const { items, total, removeItem, clearCart } = useCart()
+  const { items, count, total, removeItem, clearCart } = useCart()
 
   const handleRemove = (id: string, title: string) => {
     removeItem(id)
@@ -50,7 +50,7 @@ export default function CartDialog({ open, onOpenChange }: CartDialogProps) {
           <DialogTitle className="text-left text-lg font-bold">Cart</DialogTitle>
 
         </DialogHeader>
-    <hr />
+    
         {items.length === 0 ? (
           
           <p className="text-neutral-500 h-[20vh] font-bold flex justify-center items-center">Your cart is empty.</p>
@@ -86,9 +86,9 @@ export default function CartDialog({ open, onOpenChange }: CartDialogProps) {
               ))}
             </ul>
 
-            <DialogFooter className="mt-4">
+            <DialogFooter className="mt-4 hover:opacity-80">
               <Button
-                className="cursor-pointer w-full bg-orange-400 text-black h-12 rounded-md font-bold hover:outline-amber-700 transition-colors"
+                className="cursor-pointer w-full bg-orange-400 text-black h-12 rounded-md font-bold hover:opacity-80 transition-colors"
                 onClick={handleCheckout}
               >
                 Checkout

@@ -17,10 +17,10 @@ export default function QuantitySelector({ value, onChange }: Props) {
   };
 
   return (
-    <div className="flex items-center justify-between rounded-md bg-gray-100 px-4 py-4 w-full md:w-auto">
+    <div className="flex items-center justify-between rounded-md bg-gray-100 px-4 py-2 md:w-auto sm:w-full ">
       <button
         onClick={decrement}
-        className="px-2 text-orange-500 font-bold hover:opacity-75 focus-visible:outline-orange-500"
+        className="cursor-pointer px-2 text-orange-500 font-bold hover:opacity-75 focus-visible:outline-orange-500"
         aria-label="Decrease quantity"
       >
         <img src="/images/icon-minus.svg" alt="" />
@@ -28,7 +28,7 @@ export default function QuantitySelector({ value, onChange }: Props) {
       <span className="font-semibold">{value}</span>
       <button
         onClick={increment}
-        className="px-2 text-orange-500 font-bold hover:opacity-75 focus-visible:outline-orange-500"
+        className="cursor-pointer px-2 text-orange-500 font-bold hover:opacity-75 focus-visible:outline-orange-500"
         aria-label="Increase quantity"
       >
         <img src="/images/icon-plus.svg" alt="" />

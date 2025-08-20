@@ -9,6 +9,7 @@ export type Product = {
   category: string;
   images: string[];
   thumbnails: string[];
+  count?: number; 
 };
 
 export type CartItem = {
@@ -17,4 +18,5 @@ export type CartItem = {
   price: number;
   thumbnail: string;
   quantity: number;
+  count?: number; 
 };

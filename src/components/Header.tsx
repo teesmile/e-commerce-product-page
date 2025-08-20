@@ -11,8 +11,8 @@ export default function Header() {
   const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 py-2 z-40 bg-white ">
-  <nav className=" md:flex mx-auto container flex items-center justify-between px-8 gap-2 h-14">
+    <header className="md: sticky top-0 py-2 z-40 bg-white ">
+  <nav className=" md:flex mx-auto container flex items-center justify-between px-8 gap-2 h-14 md:pt-10 md:px-25">
 
         <div className="flex  items-center justify-center gap-4 md:gap-8">
           <button
@@ -43,12 +43,13 @@ export default function Header() {
             <img src="/images/logo.svg" alt="Logo" />
           </div>
           {/* Desktop Navigation Links */}
-           <div className="hidden md:flex gap-8 font-bold text-neutral-veryDark">
+           <div className="hidden md:flex gap-8  text-neutral-500">
         <a href="#" className="hover:text-brand cursor-pointer">Collections</a>
         <a href="#" className="hover:text-brand cursor-pointer">Men</a>
         <a href="#" className="hover:text-brand cursor-pointer">Women</a>
         <a href="#" className="hover:text-brand cursor-pointer">About</a>
         <a href="#" className="hover:text-brand cursor-pointer">Contact</a>
+      
       </div>
         </div>
         {/* Cart and User Icon */}
@@ -61,7 +62,7 @@ export default function Header() {
           >
             <img src="/images/icon-cart.svg" alt="Cart Icon" />
             {count > 0 && (
-              <span className=" absolute -top-1 -right-1 bg-brand text-white text-[10px] px-1.5 rounded-full font-bold">
+              <span className="md:w-3 md:h-3 absolute top-1 right-2  text-white bg-orange-400 text-[10px] px-1  rounded-full font-bold">
                 {count}
               </span>
             )}
@@ -71,11 +72,12 @@ export default function Header() {
             <img
               src="/images/image-avatar.png"
               alt="User Icon"
-              className="cursor-pointer w-8 h-8 rounded-full"
+              className=" md:w-11 md:h-11 cursor-pointer w-8 h-8 rounded-full"
             />
           </div>
         </div>
       </nav>
+      
 
       {/* Mobile Navbar drawer */}
       {isMenuOpen && (
@@ -120,6 +122,7 @@ export default function Header() {
           />
         </div>
       )}
+      
     </header>
   );
 }

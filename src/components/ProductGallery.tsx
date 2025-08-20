@@ -1,4 +1,6 @@
 'use client';
+import { products } from '@/data/product';
+import { useCart } from '@/store/cart';
 import { useState } from 'react';
 
 type Props = { images: string[]; thumbnails: string[] };
@@ -6,6 +8,7 @@ type Props = { images: string[]; thumbnails: string[] };
 export default function ProductGallery({ images, thumbnails }: Props) {
     const [idx, setIdx] = useState(0);
     const [lightboxOpen, setLightboxOpen] = useState(false);
+
 
     return (
         <>
@@ -23,7 +26,7 @@ export default function ProductGallery({ images, thumbnails }: Props) {
                     </svg></span>
                 </button>
                 <button className='w-full' onClick={() => setLightboxOpen(true)} aria-label='Open image lightbox'>
-                    <img src={images[idx]} alt="Product Image" className='w-full sm:h-60 sm:object-cover md:rounded-md md:h-[30rem]' />
+                    <img src={images[idx]} alt="Product Image" className='w-50% sm:h-60 sm:object-cover md:rounded-md md:h-[30rem]' />
                 </button>
                 {/* Right arrow (mobile only) */}
                 <button
@@ -51,8 +54,13 @@ export default function ProductGallery({ images, thumbnails }: Props) {
 
             {/* lightbox (modal) */}
             {lightboxOpen && (
-                <div className='hidden md:grid fixed inset-0 z-50 justify-center items-center p-4 bg-overlay'>
-                    <div className='relative w-full max-w-xl'>
+                <div className='hidden fixed inset-0 z-50 md:flex justify-center items-center p-4'>
+       <div
+      className="absolute inset-0 bg-black/50"
+      onClick={() => setLightboxOpen(false)}
+      aria-label="Close lightbox overlay"
+    />
+                    <div className='relative w-[90vw] max-w-xl'>
 
                         <button
                             className="absolute -top-9 -right-3 cursor-pointer text-gray-500 hover:text-orange-500 active:text-orange-500 transition-colors"
@@ -89,7 +97,7 @@ export default function ProductGallery({ images, thumbnails }: Props) {
                             </svg>
                         </button>
                         {/* main image */}
-                        <img src={images[idx]} alt="" className='cursor-pointer w-60% rounded-md shadow-card' />
+                        <img src={images[idx]} alt="" className='cursor-pointer w-[50vw] object-cover rounded-md shadow-card' />
 
                         {/* next arrow */}
                         <button
