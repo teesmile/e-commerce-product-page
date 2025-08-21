@@ -12,7 +12,7 @@ export default function ProductGallery({ images, thumbnails }: Props) {
 
     return (
         <>
-            <div className='md:px-10 md:pr-10 md:pt-4 w-full flex flex-col justify-center items-center relative'>
+            <div className=' md:pt-4 w-full flex flex-col justify-center items-center relative'>
                 {/* Left arrow (mobile only) */}
                 <button
                     className="cursor-pointer absolute top-1/2 left-4 -translate-y-1/2 bg-white rounded-full shadow p-4 md:hidden 
@@ -40,10 +40,10 @@ export default function ProductGallery({ images, thumbnails }: Props) {
                     </svg></span>
                 </button>
                 {/* thumbnails Horizontal scroll on mobile */}
-                <div className=' mt-4 md:gap-7 justify-center md:justify-between overflow-x-auto space-x-auto md:overflow-x-visible hidden md:flex'>
+                <div className=' mt-4 lg:gap-7 md:gap-4 justify-center md:justify-between overflow-x-auto space-x-auto md:overflow-x-visible hidden md:flex'>
                     {thumbnails.map((thumbnail, index) => (
                         <button key={index} onClick={() => setIdx(index)}
-                            className={`cursor-pointer relative md:rounded-md overflow-hidden flex-shrink-0 w-15 h-15 md:w-24 md:h-24 ring-2 ${index === idx ? 'ring-orange-500' : 'ring-transparent hover:ring-orange-500'}`} aria-label={`Show image ${index + 1}`}>
+                            className={`cursor-pointer relative md:rounded-md overflow-hidden flex-shrink-0 w-15 h-15 sm:w-18 sm:h-18 lg:w-24 lg:h-24 ring-2 ${index === idx ? 'ring-orange-500' : 'ring-transparent hover:ring-orange-500'}`} aria-label={`Show image ${index + 1}`}>
 
                             <img src={thumbnail} alt={`Thumbnail ${index + 1}`} className={`w-full h-full object-cover ${index === idx ? 'opacity-60' : 'hover:opacity-80'} md:rounded-md`} />
                         </button>

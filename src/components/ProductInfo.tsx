@@ -21,7 +21,7 @@ export default function ProductInfo() {
     }, value)
   }
   return (
-    <section className="md:flex flex-col md:space-y-6 md:px-10 space-y-4 py-4 px-6">
+    <section className="flex flex-col md:gap-6 space-y-4 py-4 px-6">
         <p className="uppercase tracking-widest text-gray-500 font-bold text-sm">{products.company}</p>
         <h1 className="text-3xl md:text-5xl font-bold tracking-wide">{products.title}</h1>
         <p className="text-gray-500 md:pt-4 md:text-lg tracking-wide">{products.description}</p>
@@ -38,7 +38,7 @@ export default function ProductInfo() {
             </div>}
         </div>
 
-        <div className="flex flex-col gap-4 md:flex-row md:justify-start md:w-full">
+        <div className="flex flex-col gap-4 md:flex-row md:justify-start">
             <QuantitySelector value={value} onChange={setValue} />
 
             <button className="cursor-pointer flex items-center justify-center gap-2 p-4 md:w-[18rem] bg-orange-400 text-black font-bold rounded-md shadow-card hover:opacity-90 active:scale-[0.99]" 
