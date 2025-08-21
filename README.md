@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ An E‑commerce Product Page with Interactive Gallery
+This is a responsive, accessible shopping interface featuring a fullscreen lightbox viewer, thumbnail carousel, quantity controls, and live cart updates, optimized for a seamless shop‑anywhere experience.
 
-## Getting Started
+## Table of contents
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### The challenge
+Users should be able to:
+- View the optimal layout for their device (mobile → desktop)
+- See hover states on all interactive elements
+- Open a fullscreen lightbox from the main product image
+- Switch product images via clickable thumbnails
+- Add items to the cart with quantity control
+- View the cart contents and remove items dynamically
+
+### Screenshot
+![](/public/images/e-commercepage.gif)
+![](/public/images/e-commercesh.png)
+
+
+
+### LinkS
+- **Solution URL:** [GitHub Repository](https://github.com/teesmile/e-commerce-product-page)  
+- **Live Site URL:** [View Live Demo](https://e-commerce-product-page-one-ashy.vercel.app/)
+
+## 🛠 My process
+
+### Built with
+- **Next.js** - React framework for SSR & SSG
+- **TypeScript** - Static typing for better scalability
+- **Tailwind CSS** - Utility‑first, responsive styling
+- **Zustand** - Lightweight state management
+- **Mobile‑first workflow** with responsive breakpoints
+- **Semantic HTML5** with accessible ARIA roles
+- **Shadcn** - A lightweight UI library for my dialog component
+- **Sonner** - For my Toast notification UI implementation
+
+## 📚 What I Learned
+
+This project was a huge leap forward for me — my first time building with **TypeScript** and **Next.js** after coming from a React + JavaScript background. I went from feeling like I was “just getting things to work” to understanding *why* certain approaches are more maintainable and scalable.
+
+Some of my key takeaways:  
+
+- **Leveling up with TypeScript** - Learning to add static typing made my codebase far more predictable. It caught potential bugs early and gave me confidence when refactoring components or working with complex props and state.  
+- **Mastering Next.js basics** - Understanding how to use Next.js for both **SSR** (Server‑Side Rendering) and **SSG** (Static Site Generation) taught me how to balance performance with fresh data needs.  
+- **State management with Zustand** - I learned how to manage global state without the overhead of larger libraries, keeping the cart logic simple, clear, and reactive.  
+- **Responsive design mindset** - I built layouts that adapt elegantly from mobile to desktop using a mobile‑first approach and Tailwind’s responsive utility classes.  
+- **Accessible UI patterns** - Implemented an accessible lightbox gallery with keyboard navigation, ensuring a better experience for all users.  
+- **Integrating UI component libraries** - First time working with **shadcn/ui** and **sonner**. I learned how to incorporate third‑party component libraries seamlessly into my Next.js project and customize them to match my design.  
+- **Utility‑first styling** - Tailwind CSS helped me style quickly without bloating my CSS, while still keeping the design consistent and clean.  
+
+**Example snippet:**  
+```tsx
+const addToCart = (item) => set((state) => ({
+  cart: [...state.cart, item]
+}));
+```
+```tsx
+export const useCart = create<CartState>((set, get) => ({
+  items: [],
+  count: 0,
+  total: 0,
+  addItem: (item, quantity = 1) => set((state) => {
+    const existingItem = state.items.find(i => i.id === item.id);
+    if (existingItem) {
+      const delta = quantity - existingItem.quantity;
+      return {
+        items: state.items.map(i => i.id === item.id ? { ...i, quantity } : i),
+        count: state.count + delta,
+        total: state.total + item.price * delta
+      };
+    }
+    return {
+      items: [...state.items, { ...item, quantity }],
+      count: state.count + quantity,
+      total: state.total + item.price * quantity
+    };
+  })
+  clearCart: () => set({ items: [], count: 0, total: 0 })
+}));
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Continued development  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Now that I’ve tackled my first project with **Next.js** and **TypeScript**, I want to keep building on that momentum and sharpen both my technical depth and workflow efficiency. My next steps include:  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Deepening TypeScript mastery** - Continue improving type safety with more advanced generics, utility types, and strict mode patterns to reduce runtime errors.  
+- **Exploring more of Next.js** - Dive into API routes, middleware, and advanced data‑fetching strategies (ISR, incremental builds) to serve more complex use cases.  
+- **Enhancing UI/UX polish** - Expand my use of component libraries like **shadcn/ui** and **sonner** to create richer, more consistent interfaces, while still custom‑styling them to match a unique brand feel.  
+- **Strengthening accessibility** - Push beyond basic ARIA roles to handle more nuanced interaction patterns, ensuring a truly inclusive experience.  
+- **Performance tuning** - Experiment with image optimization, code‑splitting, and caching strategies to hit excellent Lighthouse scores.  
+- **State management patterns** - Explore combining Zustand with other patterns like React Query or server actions for more robust data workflows.  
 
-## Learn More
+### 📌 Useful resources  
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Docs](https://nextjs.org/docs) – Core reference for routing and optimization  
+- [Zustand Docs](https://docs.pmnd.rs/zustand) – Clear examples for managing state  
+- [Tailwind CSS Docs](https://tailwindcss.com/docs) – Rapid utility styling guide  
+- [TypeScript Docs](https://www.typescriptlang.org/) – Official documentation for learning and refining TypeScript skills  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👤 Author  
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Name:** Anthony Ugwuja  
+- **GitHub (Main Profile):** [@Oluwasetemi](https://github.com/Oluwasetemi)  
+- **GitHub (Project Repo):** [@teesmile](https://github.com/teesmile)  
