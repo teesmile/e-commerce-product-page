@@ -17,7 +17,7 @@ export default function QuantitySelector({ value, onChange }: Props) {
   };
 
   return (
-    <div className="flex items-center justify-between rounded-md bg-gray-100 px-4 py-2 md:w-auto sm:w-full ">
+    <div className="flex items-center justify-between rounded-md bg-gray-100 px-4 py-2  md:w-[12rem] sm:w-full ">
       <button
         onClick={decrement}
         className="cursor-pointer px-2 text-orange-500 font-bold hover:opacity-75 focus-visible:outline-orange-500"

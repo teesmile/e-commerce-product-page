@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header className="md: sticky top-0 py-2 z-40 bg-white ">
-  <nav className=" md:flex mx-auto container flex items-center justify-between px-8 gap-2 h-14 md:pt-10 md:px-25">
+  <nav className=" md:flex mx-auto container flex items-center justify-between px-8 gap-2 h-14 md:pt-10 md:px-15">
 
         <div className="flex  items-center justify-center gap-4 md:gap-8">
           <button
@@ -122,7 +122,7 @@ export default function Header() {
           />
         </div>
       )}
-      
+      <hr className=" md:mx-35 md:mt-15 md:border-gray-200" />
     </header>
   );
 }
